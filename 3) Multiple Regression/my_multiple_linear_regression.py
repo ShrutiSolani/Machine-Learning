@@ -43,5 +43,8 @@ regressor.fit(X_train, Y_train)
 y_pred = regressor.predict(X_test)
 
 #building model using Backward Elimination
-import statsmodels.formula.api as stm
+#import statsmodels.formula.api as stm
+import statsmodels.regression.linear_model as stm
 X = np.append(np.ones(shape = (50,1)).astype(int), values = X,axis=1)
+X_opt = X[:, [0,1,2,3,4,5]]
+regressor_ols = stm.OLS(endog = y, exog = X_opt).fit()
